@@ -1,18 +1,22 @@
-#!/usr/bin/perl
+#!perl
 
-use 5.010;
+# Note: This script is a CLI interface to Riap function /Ubuntu/Releases/list_ubuntu_releases
+# and generated automatically using Dist::Zilla::Plugin::Rinci::ScriptFromFunc version 0.01
+
+our $DATE = '2014-08-16'; # DATE
+our $VERSION = '0.02'; # VERSION
+
+use 5.010001;
 use strict;
 use warnings;
 
-use Perinci::CmdLine;
+use Perinci::CmdLine::Any;
 
-our $VERSION = '0.01'; # VERSION
-our $DATE = '2014-05-28'; # DATE
+Perinci::CmdLine::Any->new(
+    url => "/Ubuntu/Releases/list_ubuntu_releases",
+)->run;
 
-Perinci::CmdLine->new(url=>'/Ubuntu/Releases/list_ubuntu_releases')->run;
-
-1;
-# ABSTRACT: List Ubuntu releases
+# ABSTRACT: Ubuntu releases
 # PODNAME: list-ubuntu-releases
 
 __END__
@@ -23,24 +27,33 @@ __END__
 
 =head1 NAME
 
-list-ubuntu-releases - List Ubuntu releases
+list-ubuntu-releases - Ubuntu releases
 
 =head1 VERSION
 
-This document describes version 0.01 of list-ubuntu-releases (from Perl distribution Ubuntu-Releases), released on 2014-05-28.
+This document describes version 0.02 of list-ubuntu-releases (from Perl distribution Ubuntu-Releases), released on 2014-08-16.
 
 =head1 SYNOPSIS
 
- # List all Ubuntu releases
- % list-ubuntu-releases --detail
+Usage:
 
- # Show available options
- $ list-ubuntu-releases --help
+ % list-ubuntu-releases
+
+Examples:
+
+ TODO
+
+To see all options:
+
+ % list-ubuntu-releases --help
 
 =head1 DESCRIPTION
 
-This is a command-line interface for the <list_ubuntu_releases> function in
-L<Ubuntu::Releases>.
+REPLACE ME
+
+=head1 OPTIONS
+
+ TODO
 
 =head1 HOMEPAGE
 

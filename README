@@ -2,8 +2,8 @@ NAME
     Ubuntu::Releases - List Ubuntu releases
 
 VERSION
-    This document describes version 0.01 of Ubuntu::Releases (from Perl
-    distribution Ubuntu-Releases), released on 2014-05-28.
+    This document describes version 0.02 of Ubuntu::Releases (from Perl
+    distribution Ubuntu-Releases), released on 2014-08-16.
 
 SYNOPSIS
      use Ubuntu::Releases;
@@ -374,6 +374,8 @@ FUNCTIONS
     element (result) is optional, the actual result. Fourth element (meta)
     is called result metadata and is optional, a hash that contains extra
     information.
+
+     (any)
 
 SEE ALSO
     Debian::Releases
