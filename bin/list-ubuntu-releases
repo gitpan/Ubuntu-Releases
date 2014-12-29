@@ -1,16 +1,16 @@
 #!perl
 
 # Note: This script is a CLI interface to Riap function /Ubuntu/Releases/list_ubuntu_releases
-# and generated automatically using Dist::Zilla::Plugin::Rinci::ScriptFromFunc version 0.01
+# and generated automatically using Dist::Zilla::Plugin::Rinci::ScriptFromFunc version 0.03
 
-our $DATE = '2014-08-16'; # DATE
-our $VERSION = '0.02'; # VERSION
+our $DATE = '2014-12-29'; # DATE
+our $VERSION = '0.03'; # VERSION
 
 use 5.010001;
 use strict;
 use warnings;
 
-use Perinci::CmdLine::Any;
+use Perinci::CmdLine::Any -prefer_lite=>1;
 
 Perinci::CmdLine::Any->new(
     url => "/Ubuntu/Releases/list_ubuntu_releases",
@@ -31,21 +31,13 @@ list-ubuntu-releases - Ubuntu releases
 
 =head1 VERSION
 
-This document describes version 0.02 of list-ubuntu-releases (from Perl distribution Ubuntu-Releases), released on 2014-08-16.
+This document describes version 0.03 of list-ubuntu-releases (from Perl distribution Ubuntu-Releases), released on 2015-12-29.
 
 =head1 SYNOPSIS
 
 Usage:
 
- % list-ubuntu-releases
-
-Examples:
-
- TODO
-
-To see all options:
-
- % list-ubuntu-releases --help
+ % list-ubuntu-releases [options]
 
 =head1 DESCRIPTION
 
@@ -53,7 +45,914 @@ REPLACE ME
 
 =head1 OPTIONS
 
- TODO
+C<*> marks required options.
+
+=head2 Field-selection options
+
+=over
+
+=item B<--detail>
+
+Return array of full records instead of just ID fields.
+
+By default, only the key (ID) field is returned per result entry.
+
+
+=item B<--fields-json>=I<s>
+
+Select fields to return (JSON-encoded).
+
+See C<--fields>.
+
+=item B<--fields>=I<s@>
+
+Select fields to return.
+
+Default value:
+
+ undef
+
+Can be specified multiple times.
+
+=item B<--with-field-names>
+
+Return field names in each record (as hash/associative array).
+
+When enabled, function will return each record as hash/associative array
+(field name => value pairs). Otherwise, function will return each record
+as list/array (field value, field value, ...).
+
+
+=back
+
+=head2 Filtering options
+
+=over
+
+=item B<-q>=I<s>
+
+Search.
+
+Default value:
+
+ undef
+
+=back
+
+=head2 Filtering-for-code_name options
+
+=over
+
+=item B<--code-name-contains>=I<s>
+
+Only return records where the 'code_name' field contains specified text.
+
+Default value:
+
+ undef
+
+=item B<--code-name-in-json>=I<s>
+
+Only return records where the 'code_name' field is in the specified values (JSON-encoded).
+
+See C<--code-name-in>.
+
+=item B<--code-name-in>=I<s@>
+
+Only return records where the 'code_name' field is in the specified values.
+
+Default value:
+
+ undef
+
+Can be specified multiple times.
+
+=item B<--code-name-is>=I<s>
+
+Only return records where the 'code_name' field equals specified value.
+
+Default value:
+
+ undef
+
+=item B<--code-name-isnt>=I<s>
+
+Only return records where the 'code_name' field does not equal specified value.
+
+Default value:
+
+ undef
+
+=item B<--code-name-max>=I<s>
+
+Only return records where the 'code_name' field is less than or equal to specified value.
+
+Default value:
+
+ undef
+
+=item B<--code-name-min>=I<s>
+
+Only return records where the 'code_name' field is greater than or equal to specified value.
+
+Default value:
+
+ undef
+
+=item B<--code-name-not-contains>=I<s>
+
+Only return records where the 'code_name' field does not contain specified text.
+
+Default value:
+
+ undef
+
+=item B<--code-name-not-in-json>=I<s>
+
+Only return records where the 'code_name' field is not in the specified values (JSON-encoded).
+
+See C<--code-name-not-in>.
+
+=item B<--code-name-not-in>=I<s@>
+
+Only return records where the 'code_name' field is not in the specified values.
+
+Default value:
+
+ undef
+
+Can be specified multiple times.
+
+=item B<--code-name-xmax>=I<s>
+
+Only return records where the 'code_name' field is less than specified value.
+
+Default value:
+
+ undef
+
+=item B<--code-name-xmin>=I<s>
+
+Only return records where the 'code_name' field is greater than specified value.
+
+Default value:
+
+ undef
+
+=item B<--code-name>=I<s>
+
+Only return records where the 'code_name' field equals specified value.
+
+Default value:
+
+ undef
+
+=back
+
+=head2 Filtering-for-kernelver options
+
+=over
+
+=item B<--kernelver-contains>=I<s>
+
+Only return records where the 'kernelver' field contains specified text.
+
+Default value:
+
+ undef
+
+=item B<--kernelver-in-json>=I<s>
+
+Only return records where the 'kernelver' field is in the specified values (JSON-encoded).
+
+See C<--kernelver-in>.
+
+=item B<--kernelver-in>=I<s@>
+
+Only return records where the 'kernelver' field is in the specified values.
+
+Default value:
+
+ undef
+
+Can be specified multiple times.
+
+=item B<--kernelver-is>=I<s>
+
+Only return records where the 'kernelver' field equals specified value.
+
+Default value:
+
+ undef
+
+=item B<--kernelver-isnt>=I<s>
+
+Only return records where the 'kernelver' field does not equal specified value.
+
+Default value:
+
+ undef
+
+=item B<--kernelver-max>=I<s>
+
+Only return records where the 'kernelver' field is less than or equal to specified value.
+
+Default value:
+
+ undef
+
+=item B<--kernelver-min>=I<s>
+
+Only return records where the 'kernelver' field is greater than or equal to specified value.
+
+Default value:
+
+ undef
+
+=item B<--kernelver-not-contains>=I<s>
+
+Only return records where the 'kernelver' field does not contain specified text.
+
+Default value:
+
+ undef
+
+=item B<--kernelver-not-in-json>=I<s>
+
+Only return records where the 'kernelver' field is not in the specified values (JSON-encoded).
+
+See C<--kernelver-not-in>.
+
+=item B<--kernelver-not-in>=I<s@>
+
+Only return records where the 'kernelver' field is not in the specified values.
+
+Default value:
+
+ undef
+
+Can be specified multiple times.
+
+=item B<--kernelver-xmax>=I<s>
+
+Only return records where the 'kernelver' field is less than specified value.
+
+Default value:
+
+ undef
+
+=item B<--kernelver-xmin>=I<s>
+
+Only return records where the 'kernelver' field is greater than specified value.
+
+Default value:
+
+ undef
+
+=item B<--kernelver>=I<s>
+
+Only return records where the 'kernelver' field equals specified value.
+
+Default value:
+
+ undef
+
+=back
+
+=head2 Filtering-for-reldate options
+
+=over
+
+=item B<--reldate-in-json>=I<s>
+
+Only return records where the 'reldate' field is in the specified values (JSON-encoded).
+
+See C<--reldate-in>.
+
+=item B<--reldate-in>=I<s>
+
+Only return records where the 'reldate' field is in the specified values.
+
+Default value:
+
+ undef
+
+=item B<--reldate-is-json>=I<s>
+
+Only return records where the 'reldate' field equals specified value (JSON-encoded).
+
+See C<--reldate-is>.
+
+=item B<--reldate-is>=I<s>
+
+Only return records where the 'reldate' field equals specified value.
+
+Default value:
+
+ undef
+
+=item B<--reldate-isnt-json>=I<s>
+
+Only return records where the 'reldate' field does not equal specified value (JSON-encoded).
+
+See C<--reldate-isnt>.
+
+=item B<--reldate-isnt>=I<s>
+
+Only return records where the 'reldate' field does not equal specified value.
+
+Default value:
+
+ undef
+
+=item B<--reldate-json>=I<s>
+
+Only return records where the 'reldate' field equals specified value (JSON-encoded).
+
+See C<--reldate>.
+
+=item B<--reldate-max-json>=I<s>
+
+Only return records where the 'reldate' field is less than or equal to specified value (JSON-encoded).
+
+See C<--reldate-max>.
+
+=item B<--reldate-max>=I<s>
+
+Only return records where the 'reldate' field is less than or equal to specified value.
+
+Default value:
+
+ undef
+
+=item B<--reldate-min-json>=I<s>
+
+Only return records where the 'reldate' field is greater than or equal to specified value (JSON-encoded).
+
+See C<--reldate-min>.
+
+=item B<--reldate-min>=I<s>
+
+Only return records where the 'reldate' field is greater than or equal to specified value.
+
+Default value:
+
+ undef
+
+=item B<--reldate-not-in-json>=I<s>
+
+Only return records where the 'reldate' field is not in the specified values (JSON-encoded).
+
+See C<--reldate-not-in>.
+
+=item B<--reldate-not-in>=I<s>
+
+Only return records where the 'reldate' field is not in the specified values.
+
+Default value:
+
+ undef
+
+=item B<--reldate-xmax-json>=I<s>
+
+Only return records where the 'reldate' field is less than specified value (JSON-encoded).
+
+See C<--reldate-xmax>.
+
+=item B<--reldate-xmax>=I<s>
+
+Only return records where the 'reldate' field is less than specified value.
+
+Default value:
+
+ undef
+
+=item B<--reldate-xmin-json>=I<s>
+
+Only return records where the 'reldate' field is greater than specified value (JSON-encoded).
+
+See C<--reldate-xmin>.
+
+=item B<--reldate-xmin>=I<s>
+
+Only return records where the 'reldate' field is greater than specified value.
+
+Default value:
+
+ undef
+
+=item B<--reldate>=I<s>
+
+Only return records where the 'reldate' field equals specified value.
+
+Default value:
+
+ undef
+
+=back
+
+=head2 Filtering-for-supdate_desktop options
+
+=over
+
+=item B<--supdate-desktop-in-json>=I<s>
+
+Only return records where the 'supdate_desktop' field is in the specified values (JSON-encoded).
+
+See C<--supdate-desktop-in>.
+
+=item B<--supdate-desktop-in>=I<s>
+
+Only return records where the 'supdate_desktop' field is in the specified values.
+
+Default value:
+
+ undef
+
+=item B<--supdate-desktop-is-json>=I<s>
+
+Only return records where the 'supdate_desktop' field equals specified value (JSON-encoded).
+
+See C<--supdate-desktop-is>.
+
+=item B<--supdate-desktop-is>=I<s>
+
+Only return records where the 'supdate_desktop' field equals specified value.
+
+Default value:
+
+ undef
+
+=item B<--supdate-desktop-isnt-json>=I<s>
+
+Only return records where the 'supdate_desktop' field does not equal specified value (JSON-encoded).
+
+See C<--supdate-desktop-isnt>.
+
+=item B<--supdate-desktop-isnt>=I<s>
+
+Only return records where the 'supdate_desktop' field does not equal specified value.
+
+Default value:
+
+ undef
+
+=item B<--supdate-desktop-json>=I<s>
+
+Only return records where the 'supdate_desktop' field equals specified value (JSON-encoded).
+
+See C<--supdate-desktop>.
+
+=item B<--supdate-desktop-max-json>=I<s>
+
+Only return records where the 'supdate_desktop' field is less than or equal to specified value (JSON-encoded).
+
+See C<--supdate-desktop-max>.
+
+=item B<--supdate-desktop-max>=I<s>
+
+Only return records where the 'supdate_desktop' field is less than or equal to specified value.
+
+Default value:
+
+ undef
+
+=item B<--supdate-desktop-min-json>=I<s>
+
+Only return records where the 'supdate_desktop' field is greater than or equal to specified value (JSON-encoded).
+
+See C<--supdate-desktop-min>.
+
+=item B<--supdate-desktop-min>=I<s>
+
+Only return records where the 'supdate_desktop' field is greater than or equal to specified value.
+
+Default value:
+
+ undef
+
+=item B<--supdate-desktop-not-in-json>=I<s>
+
+Only return records where the 'supdate_desktop' field is not in the specified values (JSON-encoded).
+
+See C<--supdate-desktop-not-in>.
+
+=item B<--supdate-desktop-not-in>=I<s>
+
+Only return records where the 'supdate_desktop' field is not in the specified values.
+
+Default value:
+
+ undef
+
+=item B<--supdate-desktop-xmax-json>=I<s>
+
+Only return records where the 'supdate_desktop' field is less than specified value (JSON-encoded).
+
+See C<--supdate-desktop-xmax>.
+
+=item B<--supdate-desktop-xmax>=I<s>
+
+Only return records where the 'supdate_desktop' field is less than specified value.
+
+Default value:
+
+ undef
+
+=item B<--supdate-desktop-xmin-json>=I<s>
+
+Only return records where the 'supdate_desktop' field is greater than specified value (JSON-encoded).
+
+See C<--supdate-desktop-xmin>.
+
+=item B<--supdate-desktop-xmin>=I<s>
+
+Only return records where the 'supdate_desktop' field is greater than specified value.
+
+Default value:
+
+ undef
+
+=item B<--supdate-desktop>=I<s>
+
+Only return records where the 'supdate_desktop' field equals specified value.
+
+Default value:
+
+ undef
+
+=back
+
+=head2 Filtering-for-supdate_server options
+
+=over
+
+=item B<--supdate-server-in-json>=I<s>
+
+Only return records where the 'supdate_server' field is in the specified values (JSON-encoded).
+
+See C<--supdate-server-in>.
+
+=item B<--supdate-server-in>=I<s>
+
+Only return records where the 'supdate_server' field is in the specified values.
+
+Default value:
+
+ undef
+
+=item B<--supdate-server-is-json>=I<s>
+
+Only return records where the 'supdate_server' field equals specified value (JSON-encoded).
+
+See C<--supdate-server-is>.
+
+=item B<--supdate-server-is>=I<s>
+
+Only return records where the 'supdate_server' field equals specified value.
+
+Default value:
+
+ undef
+
+=item B<--supdate-server-isnt-json>=I<s>
+
+Only return records where the 'supdate_server' field does not equal specified value (JSON-encoded).
+
+See C<--supdate-server-isnt>.
+
+=item B<--supdate-server-isnt>=I<s>
+
+Only return records where the 'supdate_server' field does not equal specified value.
+
+Default value:
+
+ undef
+
+=item B<--supdate-server-json>=I<s>
+
+Only return records where the 'supdate_server' field equals specified value (JSON-encoded).
+
+See C<--supdate-server>.
+
+=item B<--supdate-server-max-json>=I<s>
+
+Only return records where the 'supdate_server' field is less than or equal to specified value (JSON-encoded).
+
+See C<--supdate-server-max>.
+
+=item B<--supdate-server-max>=I<s>
+
+Only return records where the 'supdate_server' field is less than or equal to specified value.
+
+Default value:
+
+ undef
+
+=item B<--supdate-server-min-json>=I<s>
+
+Only return records where the 'supdate_server' field is greater than or equal to specified value (JSON-encoded).
+
+See C<--supdate-server-min>.
+
+=item B<--supdate-server-min>=I<s>
+
+Only return records where the 'supdate_server' field is greater than or equal to specified value.
+
+Default value:
+
+ undef
+
+=item B<--supdate-server-not-in-json>=I<s>
+
+Only return records where the 'supdate_server' field is not in the specified values (JSON-encoded).
+
+See C<--supdate-server-not-in>.
+
+=item B<--supdate-server-not-in>=I<s>
+
+Only return records where the 'supdate_server' field is not in the specified values.
+
+Default value:
+
+ undef
+
+=item B<--supdate-server-xmax-json>=I<s>
+
+Only return records where the 'supdate_server' field is less than specified value (JSON-encoded).
+
+See C<--supdate-server-xmax>.
+
+=item B<--supdate-server-xmax>=I<s>
+
+Only return records where the 'supdate_server' field is less than specified value.
+
+Default value:
+
+ undef
+
+=item B<--supdate-server-xmin-json>=I<s>
+
+Only return records where the 'supdate_server' field is greater than specified value (JSON-encoded).
+
+See C<--supdate-server-xmin>.
+
+=item B<--supdate-server-xmin>=I<s>
+
+Only return records where the 'supdate_server' field is greater than specified value.
+
+Default value:
+
+ undef
+
+=item B<--supdate-server>=I<s>
+
+Only return records where the 'supdate_server' field equals specified value.
+
+Default value:
+
+ undef
+
+=back
+
+=head2 Filtering-for-version options
+
+=over
+
+=item B<--version-arg>=I<s>
+
+Only return records where the 'version' field equals specified value.
+
+Default value:
+
+ undef
+
+=item B<--version-contains>=I<s>
+
+Only return records where the 'version' field contains specified text.
+
+Default value:
+
+ undef
+
+=item B<--version-in-json>=I<s>
+
+Only return records where the 'version' field is in the specified values (JSON-encoded).
+
+See C<--version-in>.
+
+=item B<--version-in>=I<s@>
+
+Only return records where the 'version' field is in the specified values.
+
+Default value:
+
+ undef
+
+Can be specified multiple times.
+
+=item B<--version-is>=I<s>
+
+Only return records where the 'version' field equals specified value.
+
+Default value:
+
+ undef
+
+=item B<--version-isnt>=I<s>
+
+Only return records where the 'version' field does not equal specified value.
+
+Default value:
+
+ undef
+
+=item B<--version-max>=I<s>
+
+Only return records where the 'version' field is less than or equal to specified value.
+
+Default value:
+
+ undef
+
+=item B<--version-min>=I<s>
+
+Only return records where the 'version' field is greater than or equal to specified value.
+
+Default value:
+
+ undef
+
+=item B<--version-not-contains>=I<s>
+
+Only return records where the 'version' field does not contain specified text.
+
+Default value:
+
+ undef
+
+=item B<--version-not-in-json>=I<s>
+
+Only return records where the 'version' field is not in the specified values (JSON-encoded).
+
+See C<--version-not-in>.
+
+=item B<--version-not-in>=I<s@>
+
+Only return records where the 'version' field is not in the specified values.
+
+Default value:
+
+ undef
+
+Can be specified multiple times.
+
+=item B<--version-xmax>=I<s>
+
+Only return records where the 'version' field is less than specified value.
+
+Default value:
+
+ undef
+
+=item B<--version-xmin>=I<s>
+
+Only return records where the 'version' field is greater than specified value.
+
+Default value:
+
+ undef
+
+=back
+
+=head2 General options
+
+=over
+
+=item B<--config-path>=I<s>
+
+Set path to configuration file.
+
+Can be specified multiple times.
+
+=item B<--config-profile>=I<s>
+
+Set configuration profile to use.
+
+=item B<--format>=I<s>
+
+Choose output format, e.g. json, text.
+
+=item B<--help>, B<-h>, B<-?>
+
+Display this help message.
+
+=item B<--json>
+
+Set output format to json.
+
+=item B<--naked-res>
+
+When outputing as JSON, strip result envelope.
+
+By default, when outputing as JSON, the full enveloped result is returned, e.g.:
+
+    [200,"OK",[1,2,3],{"func.extra"=>4}]
+
+The reason is so you can get the status (1st element), status message (2nd
+element) as well as result metadata/extra result (4th element) instead of just
+the result (3rd element). However, sometimes you want just the result, e.g. when
+you want to pipe the result for more post-processing. In this case you can use
+`--naked-res` so you just get:
+
+    [1,2,3]
+
+
+=item B<--no-config>
+
+Do not use any configuration file.
+
+=item B<--version>, B<-v>
+
+=back
+
+=head2 Ordering options
+
+=over
+
+=item B<--random>
+
+Return records in random order.
+
+=item B<--sort>=I<s>
+
+Order records according to certain field(s).
+
+Default value:
+
+ undef
+
+A list of field names separated by comma. Each field can be prefixed with '-' to
+specify descending order instead of the default ascending.
+
+
+=back
+
+=head2 Paging options
+
+=over
+
+=item B<--result-limit>=I<i>
+
+Only return a certain number of records.
+
+Default value:
+
+ undef
+
+=item B<--result-start>=I<i>
+
+Only return starting from the n'th record.
+
+Default value:
+
+ 1
+
+=back
+
+=head1 FILES
+
+B</etc/list-ubuntu-releases.conf>
+
+B<~/list-ubuntu-releases.conf>
+
+=head1 COMPLETION
+
+This script has shell tab completion capability with support for several shells.
+
+=head2 bash
+
+To activate bash completion for this script, put:
+
+ complete -C list-ubuntu-releases list-ubuntu-releases
+
+in your bash startup (e.g. C<~/.bashrc>). Your next shell session will then recognize tab completion for the command. Or, you can also directly execute the line above in your shell to activate immediately.
+
+It is recommended, however, that you install L<shcompgen> which allows you to activate completion scripts for several kinds of scripts on multiple shells. Some CPAN distributions (those that are built with L<Dist::Zilla::Plugin::GenShellCompletion>) will even automatically enable shell completion for their included scripts (using C<shcompgen>) at installation time, so you can immadiately have tab completion.
+
+=head2 tcsh
+
+To activate tcsh completion for this script, put:
+
+ complete list-ubuntu-releases 'p/*/`list-ubuntu-releases`/'
+
+in your tcsh startup (e.g. C<~/.tcshrc>). Your next shell session will then recognize tab completion for the command. Or, you can also directly execute the line above in your shell to activate immediately.
+
+It is also recommended to install C<shcompgen> (see above).
+
+=head2 other shells
+
+For fish and zsh, install C<shcompgen> as described above.
 
 =head1 HOMEPAGE
 
@@ -73,11 +972,11 @@ feature.
 
 =head1 AUTHOR
 
-Steven Haryanto <stevenharyanto@gmail.com>
+perlancar <perlancar@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Steven Haryanto.
+This software is copyright (c) 2014 by perlancar@cpan.org.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
